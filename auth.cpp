@@ -1,6 +1,7 @@
 #include "auth.h"
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 
 Authentication::Authentication(const std::string& filename) : dataFile(filename) {
     loadUsers();
@@ -12,9 +13,14 @@ void Authentication::loadUsers() {
         return;
     }
     
-    std::string username, password;
-    while (file >> username >> password) {
-        users.push_back(User(username, password));
+    std::string line, username, password;
+    while (std::getline(file, line)) {
+        size_t delimPos = line.find('|');
+        if (delimPos != std::string::npos) {
+            username = line.substr(0, delimPos);
+            password = line.substr(delimPos + 1);
+            users.push_back(User(username, password));
+        }
     }
     
     file.close();
@@ -28,7 +34,7 @@ void Authentication::saveUsers() {
     }
     
     for (const auto& user : users) {
-        file << user.getUsername() << " " << user.getPassword() << std::endl;
+        file << user.getUsername() << "|" << user.getPassword() << std::endl;
     }
     
     file.close();

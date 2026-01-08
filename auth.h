@@ -6,6 +6,9 @@
 #include <fstream>
 #include "user.h"
 
+// Simple authentication system for learning purposes
+// NOTE: This implementation uses plain-text password storage
+// For production use, implement proper password hashing (e.g., bcrypt, SHA-256)
 class Authentication {
 private:
     std::string dataFile;
