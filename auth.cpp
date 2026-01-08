@@ -53,6 +53,11 @@ bool Authentication::registerUser(const std::string& username, const std::string
         return false;
     }
     
+    if (username.find('|') != std::string::npos || password.find('|') != std::string::npos) {
+        std::cout << "Username and password cannot contain the pipe character (|)!" << std::endl;
+        return false;
+    }
+    
     if (userExists(username)) {
         std::cout << "Username already exists! Please choose another username." << std::endl;
         return false;
