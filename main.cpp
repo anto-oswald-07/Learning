@@ -44,6 +44,8 @@ int main() {
                 std::cout << "\n----- REGISTRATION -----" << std::endl;
                 std::cout << "Enter username: ";
                 std::getline(std::cin, username);
+                // NOTE: Password is visible during input in this simple implementation
+                // For production: Use platform-specific functions to hide password input
                 std::cout << "Enter password: ";
                 std::getline(std::cin, password);
                 auth.registerUser(username, password);
@@ -53,6 +55,8 @@ int main() {
                 std::cout << "\n----- LOGIN -----" << std::endl;
                 std::cout << "Enter username: ";
                 std::getline(std::cin, username);
+                // NOTE: Password is visible during input in this simple implementation
+                // For production: Use platform-specific functions to hide password input
                 std::cout << "Enter password: ";
                 std::getline(std::cin, password);
                 auth.loginUser(username, password);

@@ -69,6 +69,8 @@ bool Authentication::registerUser(const std::string& username, const std::string
 }
 
 bool Authentication::loginUser(const std::string& username, const std::string& password) {
+    // NOTE: Plain text password comparison used for simplicity in this learning project
+    // For production: Use secure password hashing (bcrypt, argon2, etc.)
     auto it = std::find_if(users.begin(), users.end(),
         [&username, &password](const User& user) {
             return user.getUsername() == username && user.getPassword() == password;
@@ -84,6 +86,8 @@ bool Authentication::loginUser(const std::string& username, const std::string& p
 }
 
 void Authentication::displayAllUsers() {
+    // NOTE: No authentication required for this demo feature
+    // For production: Add admin authentication before allowing user enumeration
     if (users.empty()) {
         std::cout << "No registered users found." << std::endl;
         return;
