@@ -3,39 +3,37 @@
 #include <limits>
 #include "auth.h"
 
-using namespace std;
-
 void displayMenu() {
-    cout << "\n========================================" << endl;
-    cout << "   CONSOLE LOGIN & REGISTRATION SYSTEM  " << endl;
-    cout << "========================================" << endl;
-    cout << "1. Register" << endl;
-    cout << "2. Login" << endl;
-    cout << "3. Display All Users" << endl;
-    cout << "4. Exit" << endl;
-    cout << "========================================" << endl;
-    cout << "Enter your choice: ";
+    std::cout << "\n========================================" << std::endl;
+    std::cout << "   CONSOLE LOGIN & REGISTRATION SYSTEM  " << std::endl;
+    std::cout << "========================================" << std::endl;
+    std::cout << "1. Register" << std::endl;
+    std::cout << "2. Login" << std::endl;
+    std::cout << "3. Display All Users" << std::endl;
+    std::cout << "4. Exit" << std::endl;
+    std::cout << "========================================" << std::endl;
+    std::cout << "Enter your choice: ";
 }
 
 void clearInputBuffer() {
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 int main() {
     Authentication auth;
     int choice;
-    string username, password;
+    std::string username, password;
     
-    cout << "\n***** Welcome to the Login & Registration System *****\n" << endl;
+    std::cout << "\n***** Welcome to the Login & Registration System *****\n" << std::endl;
     
     while (true) {
         displayMenu();
-        cin >> choice;
+        std::cin >> choice;
         
-        if (cin.fail()) {
+        if (std::cin.fail()) {
             clearInputBuffer();
-            cout << "\nInvalid input! Please enter a number." << endl;
+            std::cout << "\nInvalid input! Please enter a number." << std::endl;
             continue;
         }
         
@@ -43,20 +41,20 @@ int main() {
         
         switch (choice) {
             case 1:
-                cout << "\n----- REGISTRATION -----" << endl;
-                cout << "Enter username: ";
-                getline(cin, username);
-                cout << "Enter password: ";
-                getline(cin, password);
+                std::cout << "\n----- REGISTRATION -----" << std::endl;
+                std::cout << "Enter username: ";
+                std::getline(std::cin, username);
+                std::cout << "Enter password: ";
+                std::getline(std::cin, password);
                 auth.registerUser(username, password);
                 break;
                 
             case 2:
-                cout << "\n----- LOGIN -----" << endl;
-                cout << "Enter username: ";
-                getline(cin, username);
-                cout << "Enter password: ";
-                getline(cin, password);
+                std::cout << "\n----- LOGIN -----" << std::endl;
+                std::cout << "Enter username: ";
+                std::getline(std::cin, username);
+                std::cout << "Enter password: ";
+                std::getline(std::cin, password);
                 auth.loginUser(username, password);
                 break;
                 
@@ -65,11 +63,11 @@ int main() {
                 break;
                 
             case 4:
-                cout << "\nThank you for using the system. Goodbye!" << endl;
+                std::cout << "\nThank you for using the system. Goodbye!" << std::endl;
                 return 0;
                 
             default:
-                cout << "\nInvalid choice! Please select 1-4." << endl;
+                std::cout << "\nInvalid choice! Please select 1-4." << std::endl;
         }
     }
     

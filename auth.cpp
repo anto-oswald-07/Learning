@@ -1,7 +1,6 @@
 #include "auth.h"
 #include <iostream>
 #include <algorithm>
-#include <sstream>
 
 Authentication::Authentication(const std::string& filename) : dataFile(filename) {
     loadUsers();
