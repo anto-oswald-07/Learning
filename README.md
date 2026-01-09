@@ -1,0 +1,2 @@
+-> This is the repository where i upload all my ultra mini projects that i build during my learning process
+-> The projects in this repository are intentionally kept simple
