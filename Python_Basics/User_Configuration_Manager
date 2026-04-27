@@ -1,0 +1,41 @@
+test_settings = {}
+
+def add_setting(settings, tuple_pair):
+    key_lower = tuple_pair[0].lower()
+    value_lower = tuple_pair[1].lower()
+    
+    if key_lower in settings:
+        return f"Setting '{key_lower}' already exists! Cannot add a new setting with this name."
+    else:
+        settings[key_lower] = value_lower
+        return f"Setting '{key_lower}' added with value '{value_lower}' successfully!"
+
+def update_setting(settings, tuple_pair):
+    key_lower = tuple_pair[0].lower()
+    value_lower = tuple_pair[1].lower()
+    
+    if key_lower in settings:
+        settings[key_lower] = value_lower
+        return f"Setting '{key_lower}' updated to '{value_lower}' successfully!"
+    else:
+        return f"Setting '{key_lower}' does not exist! Cannot update a non-existing setting."
+
+def delete_setting(settings, key):
+    key_lower = key.lower()
+    
+    if key_lower in settings:
+        del settings[key_lower]
+        return f"Setting '{key_lower}' deleted successfully!"
+    else:
+        return "Setting not found!"
+
+def view_settings(settings):
+    if not settings:
+        return "No settings available."
+    else:
+        result = "Current User Settings:"
+        for key in settings:
+            result += f"\n{key.capitalize()}: {settings[key]}"
+        return result
+
+
