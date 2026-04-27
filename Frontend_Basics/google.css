@@ -1,0 +1,49 @@
+
+.main{
+    margin-top: 100px;
+}
+.logo{
+    display: block;
+    width: 400px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search{
+    display: block;
+    line-height: 24px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+}
+
+.btn-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    margin-top: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    background: #dfe1e5;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/*padding = space inside the element's border
+margin = space outside the element's border
+border = the edge of the element (dotted/solid/etc , color,) 
+border-radius = rounds the corners of the element's border*/
