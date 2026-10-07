@@ -1,0 +1,22 @@
+╭─antooswald at fedora in ~ 26-10-06 - 20:20:03
+╰─○ cd                                      
+╭─antooswald at fedora in ~ 26-10-06 - 20:20:14
+╰─○ sudo nano /usr/lib/systemd/system-sleep/wifi-restart.sh
+[sudo] password for antooswald: 
+╭─antooswald at fedora in ~ 26-10-06 - 20:20:41
+╰─○ sudo chmod +x /usr/lib/systemd/system-sleep/wifi-restart.sh
+╭─antooswald at fedora in ~ 26-10-06 - 20:20:48
+╰─○ systemctl suspend
+╭─antooswald at fedora in ~ 26-10-06 - 20:21:00
+╰─○ sudo source /usr/lib/systemd/system-sleep/wifi-restart.sh
+sudo: source: command not found
+╭─antooswald at fedora in ~ 26-10-06 - 20:22:00
+╰─○ source /usr/lib/systemd/system-sleep/wifi-restart.sh 
+╭─antooswald at fedora in ~ 26-10-06 - 20:22:07
+╰─○ systemctl suspend                                        
+╭─antooswald at fedora in ~ 26-10-06 - 20:22:11
+╰─○ 
+╭─antooswald at fedora in ~ 26-10-06 - 20:23:01
+╰─○ 
+╭─antooswald at fedora in ~ 26-10-06 - 20:23:01
+╰─○ 
