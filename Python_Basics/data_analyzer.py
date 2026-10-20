@@ -3,21 +3,43 @@ lazy import numpy as np
 lazy import matplotlib.pyplot as plt
 import os
 
+
+def load_file(path):
+    try:
+        df = pd.read_csv(path)
+        print("Data loaded successfully!")
+        return df
+    except FileNotFoundError:
+        print(f"Error: The file at {path} was not found.")
+        return None
+
+def quality_report(df):
+    if df is not None:
+        print("========== DATA QUALITY REPORT ==========")
+        print(f"Total rows: {df.shape[0]}")
+        print(f"Total columns: {df.shape[1]}")
+        print(f"Missing values:\n{df.isna().sum()}")
+        print(f"Data types:\n{df.dtypes}")
+        print("=========================================")
+        return None
+
+    else:
+        print("No data available to generate a quality report.")
+        return None
+
+    
 print("Hello Python enthusiast")
 
 #/home/antooswald/Downloads/color_srgb.csv
 #path = input("Enter the path to the CSV file: ")
-df = pd.read_csv("/home/antooswald/Downloads/color_srgb.csv")
+path = "/home/antooswald/Downloads/sample.csv"
 
-print("Data loaded successfully!")
+df = load_file(path)
+
 print("rows:" , df.shape[0])
 print("columns:", df.shape[1])
 
-print(df.dtypes)
-print(df.shape)
-print(df.columns)
-print(df.info())
-print(df.describe())
+quality_report(df)
 
 '''
 print("Choose an operation:")
@@ -46,8 +68,7 @@ elif choice == "3":
     print("Statistical summary:")
     print(df.describe())
 elif choice == "4":
-    print("Data quality report:")
-    print(df.isnull().sum())
+    quality_report(df)
 elif choice == "5":
     pass  # Placeholder for filter and sort data functionality
 elif choice == "6":
