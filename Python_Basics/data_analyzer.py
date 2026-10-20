@@ -17,6 +17,7 @@ print(df.dtypes)
 print(df.shape)
 print(df.columns)
 print(df.info())
+print(df.describe())
 
 '''
 print("Choose an operation:")
@@ -65,5 +66,5 @@ elif choice == "9":
 elif choice == "0":
     print("Exiting the program. Goodbye!")
 '''
-
+print("Bye gng, luv u")
 
