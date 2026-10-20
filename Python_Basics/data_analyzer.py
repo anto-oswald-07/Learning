@@ -1,19 +1,24 @@
 lazy import pandas as pd
 lazy import numpy as np
 lazy import matplotlib.pyplot as plt
+import os
 
 print("Hello Python enthusiast")
 
 #/home/antooswald/Downloads/color_srgb.csv
-path = input("Enter the path to the CSV file: ")
-df = pd.read_csv(path)
+#path = input("Enter the path to the CSV file: ")
+df = pd.read_csv("/home/antooswald/Downloads/color_srgb.csv")
 
 print("Data loaded successfully!")
 print("rows:" , df.shape[0])
 print("columns:", df.shape[1])
 
 print(df.dtypes)
+print(df.shape)
+print(df.columns)
+print(df.info())
 
+'''
 print("Choose an operation:")
 print()
 print("1. Preview dataset")
@@ -59,3 +64,6 @@ elif choice == "9":
     print(df.dtypes)
 elif choice == "0":
     print("Exiting the program. Goodbye!")
+'''
+
+
