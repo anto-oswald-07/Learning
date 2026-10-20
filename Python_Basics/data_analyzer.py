@@ -20,6 +20,7 @@ def quality_report(df):
         print(f"Total columns: {df.shape[1]}")
         print(f"Missing values:\n{df.isna().sum()}")
         print(f"Data types:\n{df.dtypes}")
+        print(f"Duplicate rows: {df.duplicated().sum()}")
         print("=========================================")
         return None
 
@@ -36,10 +37,11 @@ path = "/home/antooswald/Downloads/sample.csv"
 
 df = load_file(path)
 
-print("rows:" , df.shape[0])
-print("columns:", df.shape[1])
-
 quality_report(df)
+
+
+
+
 
 '''
 print("Choose an operation:")
@@ -78,12 +80,7 @@ elif choice == "7":
 elif choice == "8":
     pass  # Placeholder for export analysis report functionality
 elif choice == "9":
-    path = input("Enter the path to the new CSV file: ")
-    df = pd.read_csv(path)
-    print("Data loaded successfully!")
-    print("rows:" , df.shape[0])
-    print("columns:", df.shape[1])
-    print(df.dtypes)
+    pass # Placeholder for load another dataset functionality
 elif choice == "0":
     print("Exiting the program. Goodbye!")
 '''
