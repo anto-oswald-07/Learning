@@ -3,7 +3,7 @@ lazy import numpy as np
 lazy import matplotlib.pyplot as plt
 import os
 
-
+# Functions
 def load_file(path):
     try:
         df = pd.read_csv(path)
@@ -59,7 +59,13 @@ def quality_report(df):
         print("No data available to generate a quality report.")
         return None
 
-    
+def load_another_dataset():
+    path = input("Enter the path to the CSV file: ")
+    df = load_file(path)
+    return df
+
+
+# Main Program
 print("Hello Python enthusiast")
 
 #/home/antooswald/Downloads/sample.csv
@@ -67,6 +73,8 @@ print("Hello Python enthusiast")
 path = "/home/antooswald/Downloads/sample.csv"
 
 df = load_file(path)
+
+df = load_another_dataset()
 
 statistical_summary(df)
 
@@ -94,11 +102,9 @@ choice = input("Enter your choice: ")
 if choice == "1":
     preview_dataset(df)
 elif choice == "2":
-    print("Dataset overview:")
-    print(df.info())
+    dataset_overview(df)
 elif choice == "3":
-    print("Statistical summary:")
-    print(df.describe())
+    statistical_summary(df)
 elif choice == "4":
     quality_report(df)
 elif choice == "5":
@@ -110,7 +116,7 @@ elif choice == "7":
 elif choice == "8":
     pass  # Placeholder for export analysis report functionality
 elif choice == "9":
-    pass # Placeholder for load another dataset functionality
+    df = load_another_dataset()
 elif choice == "0":
     print("Exiting the program. Goodbye!")
 '''
