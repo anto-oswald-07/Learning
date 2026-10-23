@@ -14,19 +14,35 @@ def load_file(path):
         return None
 
 def preview_dataset(df):
-    print("========== DATASET PREVIEW ==========")
-    print(df.head())
-    print("=====================================")
+    if df is not None:
+        print("========== DATASET PREVIEW ==========")
+        print(df.head())
+        print("=====================================")
+
+    else:
+        print("No data available to generate a preview.")
+        return None
 
 def dataset_overview(df):
-    print("========== DATASET OVERVIEW==========")
-    print(df.info())
-    print("=====================================")
+    if df is not None:
+        print("========== DATASET OVERVIEW==========")
+        print(df.info())
+        print("=====================================")
+
+    else:
+        print("No data available to generate a dataset overview.")
+        return None
 
 def statistical_summary(df):
-    print("============== STATISTICAL SUMMARY ==============")
-    print(df.describe())
-    print("=================================================")
+    if df is not None:
+        print("============== STATISTICAL SUMMARY ==============")
+        print(df.describe())
+        print("=================================================")
+        return None
+
+    else:
+        print("No data available to generate a statistical summary.")
+        return None
 
 def quality_report(df):
     if df is not None:
