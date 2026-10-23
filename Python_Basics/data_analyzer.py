@@ -1,23 +1,94 @@
 lazy import pandas as pd
 lazy import numpy as np
+import matplotlib 
+matplotlib.use("QtAgg")
 lazy import matplotlib.pyplot as plt
 import os
 
+# Functions
+def load_file(path):
+    try:
+        df = pd.read_csv(path)
+        print("Data loaded successfully!")
+        return df
+    except FileNotFoundError:
+        print(f"Error: The file at {path} was not found.")
+        return None
+
+def preview_dataset(df):
+    if df is not None:
+        print("========== DATASET PREVIEW ==========")
+        print(df.head())
+        print("=====================================")
+
+    else:
+        print("No data available to generate a preview.")
+        return None
+
+def dataset_overview(df):
+    if df is not None:
+        print("========== DATASET OVERVIEW==========")
+        print(df.info())
+        print("=====================================")
+
+    else:
+        print("No data available to generate a dataset overview.")
+        return None
+
+def statistical_summary(df):
+    if df is not None:
+        print("============== STATISTICAL SUMMARY ==============")
+        print(df.describe())
+        print("=================================================")
+        return None
+
+    else:
+        print("No data available to generate a statistical summary.")
+        return None
+
+def quality_report(df):
+    if df is not None:
+        print("========== DATA QUALITY REPORT ==========")
+        print(f"Total rows: {df.shape[0]}")
+        print(f"Total columns: {df.shape[1]}")
+        print(f"Missing values:\n{df.isna().sum()}")
+        print(f"Data types:\n{df.dtypes}")
+        print(f"Duplicate rows: {df.duplicated().sum()}")
+        print("=========================================")
+        return None
+
+    else:
+        print("No data available to generate a quality report.")
+        return None
+
+def load_another_dataset():
+    path = input("Enter the path to the CSV file: ")
+    df = load_file(path)
+    return df
+
+
+# Main Program
 print("Hello Python enthusiast")
 
-#/home/antooswald/Downloads/color_srgb.csv
+#/home/antooswald/Downloads/sample.csv
 #path = input("Enter the path to the CSV file: ")
-df = pd.read_csv("/home/antooswald/Downloads/color_srgb.csv")
+path = "/home/antooswald/Downloads/sample.csv"
 
-print("Data loaded successfully!")
-print("rows:" , df.shape[0])
-print("columns:", df.shape[1])
+df = load_file(path)
 
-print(df.dtypes)
-print(df.shape)
 print(df.columns)
-print(df.info())
-print(df.describe())
+print(df.dtypes)
+print(df.head())
+
+age = df["age"]
+salary = df["salary"]
+
+    
+plt.scatter(age, salary)
+plt.xlabel("Age")
+plt.ylabel("Salary")
+plt.title("Age vs. Salary")
+plt.show()
 
 '''
 print("Choose an operation:")
@@ -37,17 +108,13 @@ print()
 choice = input("Enter your choice: ")
 
 if choice == "1":
-    print("Previewing dataset...")
-    print(df.head())
+    preview_dataset(df)
 elif choice == "2":
-    print("Dataset overview:")
-    print(df.info())
+    dataset_overview(df)
 elif choice == "3":
-    print("Statistical summary:")
-    print(df.describe())
+    statistical_summary(df)
 elif choice == "4":
-    print("Data quality report:")
-    print(df.isnull().sum())
+    quality_report(df)
 elif choice == "5":
     pass  # Placeholder for filter and sort data functionality
 elif choice == "6":
@@ -57,12 +124,7 @@ elif choice == "7":
 elif choice == "8":
     pass  # Placeholder for export analysis report functionality
 elif choice == "9":
-    path = input("Enter the path to the new CSV file: ")
-    df = pd.read_csv(path)
-    print("Data loaded successfully!")
-    print("rows:" , df.shape[0])
-    print("columns:", df.shape[1])
-    print(df.dtypes)
+    df = load_another_dataset()
 elif choice == "0":
     print("Exiting the program. Goodbye!")
 '''
