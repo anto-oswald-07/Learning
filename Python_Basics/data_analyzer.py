@@ -1,5 +1,7 @@
 lazy import pandas as pd
 lazy import numpy as np
+import matplotlib 
+matplotlib.use("QtAgg")
 lazy import matplotlib.pyplot as plt
 import os
 
@@ -74,11 +76,19 @@ path = "/home/antooswald/Downloads/sample.csv"
 
 df = load_file(path)
 
-quality_report(df)
+print(df.columns)
+print(df.dtypes)
+print(df.head())
 
+age = df["age"]
+salary = df["salary"]
 
-
-
+    
+plt.scatter(age, salary)
+plt.xlabel("Age")
+plt.ylabel("Salary")
+plt.title("Age vs. Salary")
+plt.show()
 
 '''
 print("Choose an operation:")
