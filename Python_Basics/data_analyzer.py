@@ -13,6 +13,11 @@ def load_file(path):
         print(f"Error: The file at {path} was not found.")
         return None
 
+def preview_dataset(df):
+    print("========== DATASET PREVIEW ==========")
+    print(df.head())
+    print("=====================================")
+
 def quality_report(df):
     if df is not None:
         print("========== DATA QUALITY REPORT ==========")
@@ -31,13 +36,13 @@ def quality_report(df):
     
 print("Hello Python enthusiast")
 
-#/home/antooswald/Downloads/color_srgb.csv
+#/home/antooswald/Downloads/sample.csv
 #path = input("Enter the path to the CSV file: ")
 path = "/home/antooswald/Downloads/sample.csv"
 
 df = load_file(path)
 
-quality_report(df)
+preview_dataset(df)
 
 
 
@@ -61,8 +66,7 @@ print()
 choice = input("Enter your choice: ")
 
 if choice == "1":
-    print("Previewing dataset...")
-    print(df.head())
+    preview_dataset(df)
 elif choice == "2":
     print("Dataset overview:")
     print(df.info())
