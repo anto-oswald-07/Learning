@@ -40,23 +40,26 @@ int main() {
     int n;
     cout<<"Press 1 to add service"<<endl<<"Press 2 to process a service"<<endl<<"Press 3 to view services"<<endl;
     cin>>n;
-    switch (n) {
-        case 1:{
-            add_service o;
-            break;
+    do{
+        switch (n) {
+            case 1:{
+                add_service o;
+                break;
+            }
+            case 2:{    
+                process_service o;
+                break;
+            }
+            case 3:{
+                view_service o;
+                break;
+            }
+            default:
+                cout<<"An error occured"<<endl;
+                return 0;
         }
-        case 2:{    
-            process_service o;
-            break;
-        }
-        case 3:{
-            view_service o;
-            break;
-        }
-        default:
-            cout<<"An error occured"<<endl;
-            return 0;
-    }
-
+        cout<<"Press 1 to add service"<<endl<<"Press 2 to process a service"<<endl<<"Press 3 to view services"<<endl;
+        cin>>n;
+    }while(n >= 1 && n <= 3);
     return 0;
 }
