@@ -74,9 +74,7 @@ path = "/home/antooswald/Downloads/sample.csv"
 
 df = load_file(path)
 
-df = load_another_dataset()
-
-statistical_summary(df)
+quality_report(df)
 
 
 
