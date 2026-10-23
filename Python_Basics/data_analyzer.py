@@ -18,6 +18,11 @@ def preview_dataset(df):
     print(df.head())
     print("=====================================")
 
+def dataset_overview(df):
+    print("========== DATASET OVERVIEW==========")
+    print(df.info())
+    print("=====================================")
+
 def quality_report(df):
     if df is not None:
         print("========== DATA QUALITY REPORT ==========")
@@ -42,7 +47,7 @@ path = "/home/antooswald/Downloads/sample.csv"
 
 df = load_file(path)
 
-preview_dataset(df)
+dataset_overview(df)
 
 
 
