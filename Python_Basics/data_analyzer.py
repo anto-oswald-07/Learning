@@ -23,6 +23,11 @@ def dataset_overview(df):
     print(df.info())
     print("=====================================")
 
+def statistical_summary(df):
+    print("============== STATISTICAL SUMMARY ==============")
+    print(df.describe())
+    print("=================================================")
+
 def quality_report(df):
     if df is not None:
         print("========== DATA QUALITY REPORT ==========")
@@ -47,7 +52,7 @@ path = "/home/antooswald/Downloads/sample.csv"
 
 df = load_file(path)
 
-dataset_overview(df)
+statistical_summary(df)
 
 
 
