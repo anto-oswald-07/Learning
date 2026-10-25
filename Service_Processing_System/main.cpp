@@ -1,62 +1,174 @@
 #include<iostream>
+#include<string>
+#include<iomanip>
+#include<vector>
+#include<fstream>
 
 using namespace std;
 
-class add_service{
+class Task{
     private:
-        int id;
-        string name;
-    
-    public:
-        add_service(){
-            cout<<"Enter service id: ";
-            cin>>id;
-            cout<<"Enter service name: ";
-            cin>>name;
-            cout<<"Service added successfully!"<<endl;
-        }
-};
+        string title;
+        string description;
+        bool completed;
 
-class process_service{
-    private:
-        int id;
     public:
-        process_service(){
-            cout<<"Enter service id to process: ";
-            cin>>id;
-            cout<<"Service processed successfully!"<<endl;
-        }
-};
+        Task(string title, string description) : title(title), description(description), completed(false) {}
 
-class view_service{
-    public:
-        view_service(){
-            cout<<"Viewing all services..."<<endl;
+        void displayTask() const {
+            cout << "Title: " << title << endl;
+            cout << "Description: " << description << endl;
+            cout << "Completed: " << (completed ? "Yes" : "No") << endl;
+        }
+
+
+        void displayTitle() const {
+            cout << "Title: " << title << endl;
+        }
+
+        void markCompleted() {
+            completed = true;
+        }
+
+        string getTitle() const {
+            return title;
+        }
+
+        string getDescription() const {
+            return description;
+        }
+
+        bool isCompleted() const {
+            return completed;
         }
 };
 
 int main() {
-    cout << "Hello, World!" << endl;
-    int n;
-    cout<<"Press 1 to add service"<<endl<<"Press 2 to process a service"<<endl<<"Press 3 to view services"<<endl;
-    cin>>n;
-    switch (n) {
-        case 1:{
-            add_service o;
-            break;
+
+    vector<Task> tasks;
+
+    string line = "==============================";
+    string text = "TaskForge";
+
+    int padding = (line.length() - text.length()) / 2;
+    int total_width = padding + text.length();
+
+    cout << line << endl;
+    cout<<setw(total_width) << text << endl;
+    cout << line << endl;
+
+    int choice {};
+    cout << "1) Add Task \n2) View Tasks \n3) Complete Task \n4) Delete Task \n5) Exit" << endl;
+    cin>> choice;
+    
+    do{
+        switch (choice) {
+            case 1:{
+                cout << "You selected option 1." << endl;
+
+                cin.ignore();
+
+                cout << "Enter Task name: ";
+                string taskName;
+                getline(cin, taskName);
+
+                cout << "\nEnter Task description: ";
+                string taskDescription;
+                getline(cin, taskDescription);
+
+                Task newTask(taskName, taskDescription);
+                tasks.push_back(newTask);
+                cout << "Task added successfully." << endl;
+
+                break;
+            }
+
+            case 2:{
+                cout << "You selected option 2." << endl;
+
+                if (tasks.empty()) {
+                    cout << "No tasks available." << endl;
+                    break;
+                } else {
+                    for (const Task& task : tasks) {
+                        task.displayTask();
+                        cout << endl;
+                    }
+                }
+                break;
+            }
+
+            case 3:{
+                cout << "You selected option 3." << endl;
+
+                if (tasks.empty()) {
+                    cout << "No tasks available." << endl;
+                    break;
+                }
+                cout << "Select the task to mark as completed: " << endl;
+
+                for (int i = 0; i < tasks.size(); ++i) {
+                    cout << i + 1 << ") ";
+                    tasks[i].displayTitle();
+                }
+
+                cout << "Enter the task number: ";
+                int taskNumber;
+                cin >> taskNumber;
+
+                if (taskNumber < 1 || taskNumber > tasks.size()) {
+                    cout << "Invalid task number." << endl;
+                    break;
+                } else {
+                    tasks[taskNumber - 1].markCompleted();
+                    cout << "Task marked as completed." << endl;
+                }
+
+                break;
+            }
+
+            case 4:{
+                cout << "You selected option 4." << endl;
+
+                if (tasks.empty()) {
+                    cout << "No tasks available." << endl;
+                    break;
+                }
+                cout << "Select the task to delete: " << endl;
+
+                for (int i = 0; i < tasks.size(); ++i) {
+                    cout << i + 1 << ") ";
+                    tasks[i].displayTitle();
+                }
+
+                cout << "Enter the task number: ";
+                int taskNumber;
+                cin >> taskNumber;
+
+                if (taskNumber < 1 || taskNumber > tasks.size()) {
+                    cout << "Invalid task number." << endl;
+                    break;
+                } else {
+                    tasks.erase(tasks.begin() + taskNumber - 1);
+                    cout << "Task deleted successfully." << endl;
+                }
+
+                break;
+            }
+
+            case 5:{
+                cout << "Exiting..." << endl;
+                return 0;
+            }
+
+            default:{
+                cout << "Invalid choice. Please select a valid option." << endl;
+            }
+
         }
-        case 2:{    
-            process_service o;
-            break;
-        }
-        case 3:{
-            view_service o;
-            break;
-        }
-        default:
-            cout<<"An error occured"<<endl;
-            return 0;
-    }
+    cout << "1) Add Task \n2) View Tasks \n3) Complete Task \n4) Delete Task \n5) Exit" << endl;
+    cin >> choice;
+    } while (choice >= 1 && choice <= 5);
 
     return 0;
 }

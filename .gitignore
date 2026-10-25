@@ -96,3 +96,5 @@ build/
 *.tar
 *.gz
 *.7z
+
+main
